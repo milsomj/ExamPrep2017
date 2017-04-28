@@ -1,0 +1,32 @@
+--ghc 7.10
+
+fib x
+  | x < 2 = 1
+  | otherwise = fib (x - 1) + fib (x - 2)
+
+
+foo (2,y) = (2,y*2)
+foo (x,y) = (x,y)
+
+myMap func [] = []
+myMap func (x:xs) = func x:(myMap func xs)
+
+myString x = if x == 1
+    then "one"
+    else "default"
+
+mySwitch x = case x of
+    1 -> "one"
+    2 -> "two"
+    _ -> "default"
+
+countLines :: String -> String
+countLines = show . length . lines
+
+sayHello :: IO ()
+sayHello = do
+   putStrLn "What is your name?"
+   name <- getLine -- this gets a line and gives it the name "name"
+   putStrLn $ "Hello, " ++ name
+
+main = sayHello
